@@ -1,4 +1,4 @@
-/* Seymur Mammadov, 2026-11-20, v5.0 */
+/* Seymur Mammadov, 2026-11-20, v6.0 */
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Montserrat:wght@600;700&display=swap");
 
@@ -539,4 +539,26 @@ section,
   margin-top: 10px;
   font-weight: 700;
   color: #1a56db;
+}
+
+.status-select {
+  font-size: 13px;
+  padding: 3px 8px;
+  border: 1px solid #c7d2fe;
+  border-radius: 12px;
+  background: #e7f0ff;
+  color: #1a56db;
+  cursor: pointer;
+}
+
+.planned .status-select {
+  background: #e9ecef;
+  border-color: #ced4da;
+  color: #495057;
+}
+
+.completed .status-select {
+  background: #d1f2e0;
+  border-color: #a3d9b8;
+  color: #146c43;
 }

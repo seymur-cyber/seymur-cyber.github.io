@@ -1,4 +1,4 @@
-// Seymur Mammadov, 2026-11-20, v5.0
+// Seymur Mammadov, 2026-11-20, v6.0
 
 const form = document.getElementById("contactForm");
 const submitBtn = document.getElementById("submitBtn");
@@ -154,3 +154,152 @@ clearBtn.addEventListener("click", function () {
 });
 
 checkForm();
+
+const defaultSkills = [
+  { name: "HTML Basics", status: "Completed", xp: 30 },
+  { name: "CSS Styling", status: "Completed", xp: 45 },
+  { name: "Git and GitHub", status: "Completed", xp: 25 },
+  { name: "Bootstrap Grid", status: "In Progress", xp: 35 },
+  { name: "JavaScript Basics", status: "In Progress", xp: 60 },
+  { name: "Forms and Validation", status: "Planned", xp: 50 },
+  { name: "DOM Manipulation", status: "Planned", xp: 70 },
+  { name: "Local Storage", status: "Planned", xp: 40 },
+];
+
+const statuses = ["Planned", "In Progress", "Completed"];
+
+const lists = {
+  "Planned": document.getElementById("plannedList"),
+  "In Progress": document.getElementById("inProgressList"),
+  "Completed": document.getElementById("completedList"),
+};
+
+let skills = loadSkills();
+
+function loadSkills() {
+  const saved = localStorage.getItem("skills");
+  if (saved) {
+    return JSON.parse(saved);
+  }
+  return defaultSkills.map(function (skill) {
+    return { name: skill.name, status: skill.status, xp: skill.xp };
+  });
+}
+
+function saveSkills() {
+  localStorage.setItem("skills", JSON.stringify(skills));
+}
+
+function createCard(skill, index) {
+  const card = document.createElement("div");
+  card.className = "skill-card";
+
+  const title = document.createElement("h5");
+  title.textContent = skill.name;
+
+  const select = document.createElement("select");
+  select.className = "status-select";
+  for (const status of statuses) {
+    const option = document.createElement("option");
+    option.value = status;
+    option.textContent = status;
+    if (status === skill.status) {
+      option.selected = true;
+    }
+    select.appendChild(option);
+  }
+  select.addEventListener("change", function () {
+    changeStatus(index, select.value);
+  });
+
+  const xp = document.createElement("span");
+  xp.className = "xp";
+  xp.textContent = skill.xp + " XP";
+
+  card.appendChild(title);
+  card.appendChild(select);
+  card.appendChild(xp);
+  return card;
+}
+
+function renderCards() {
+  for (const status of statuses) {
+    lists[status].innerHTML = "";
+  }
+
+  skills.forEach(function (skill, index) {
+    lists[skill.status].appendChild(createCard(skill, index));
+  });
+
+  for (const status of statuses) {
+    const count = skills.filter(function (skill) {
+      return skill.status === status;
+    }).length;
+    lists[status].parentElement.querySelector(".count").textContent = "(" + count + ")";
+  }
+}
+
+function getLevel(xp) {
+  if (xp >= 300) {
+    return { level: 4, rank: "Professional", min: 300, max: 300 };
+  }
+  if (xp >= 150) {
+    return { level: 3, rank: "Specialist", min: 150, max: 300 };
+  }
+  if (xp >= 50) {
+    return { level: 2, rank: "Trainee", min: 50, max: 150 };
+  }
+  return { level: 1, rank: "Beginner", min: 0, max: 50 };
+}
+
+function updateProgress() {
+  let totalXp = 0;
+  for (const skill of skills) {
+    if (skill.status === "Completed") {
+      totalXp += skill.xp;
+    }
+  }
+
+  const info = getLevel(totalXp);
+  let percent = 100;
+  if (info.level < 4) {
+    percent = Math.round(((totalXp - info.min) / (info.max - info.min)) * 100);
+  }
+
+  document.getElementById("totalXp").textContent = totalXp + " XP";
+  document.getElementById("level").textContent = "Level " + info.level;
+  document.getElementById("rank").textContent = info.rank;
+  document.getElementById("xpBar").style.width = percent + "%";
+
+  if (info.level < 4) {
+    document.getElementById("progressText").textContent = percent + "% (" + totalXp + " / " + info.max + " XP)";
+  } else {
+    document.getElementById("progressText").textContent = "100% (max level)";
+  }
+}
+
+function updateStats() {
+  const total = skills.length;
+  const completed = skills.filter(function (skill) {
+    return skill.status === "Completed";
+  }).length;
+  const percent = Math.round((completed / total) * 100);
+
+  document.getElementById("totalSkills").textContent = total;
+  document.getElementById("completedSkills").textContent = completed;
+  document.getElementById("completedPercent").textContent = percent + "%";
+}
+
+function changeStatus(index, newStatus) {
+  skills[index].status = newStatus;
+  saveSkills();
+  updateModule();
+}
+
+function updateModule() {
+  renderCards();
+  updateProgress();
+  updateStats();
+}
+
+updateModule();
