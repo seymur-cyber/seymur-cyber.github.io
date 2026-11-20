@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Seymur Mammadov, 2026-11-20, v3.1 -->
+<!-- Seymur Mammadov, 2026-11-20, v4.0 -->
 <html lang="en">
 
 <head>
@@ -38,6 +38,7 @@
       <ul>
         <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
         <li><a href="#about"><i class="bi bi-person navicon"></i><span>About</span></a></li>
+        <li><a href="#progress"><i class="bi bi-bar-chart-line navicon"></i><span>Progress</span></a></li>
         <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Resume</span></a></li>
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
         <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i><span>Services</span></a></li>
@@ -68,6 +69,10 @@
     </section>
 
     <section id="about" class="about section">
+
+      <div class="shape circle"></div>
+      <div class="shape triangle"></div>
+      <div class="shape square"></div>
 
       <div class="container section-title" data-aos="fade-up">
         <h2>About</h2>
@@ -175,6 +180,118 @@
 
           </div>
 
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="progress" class="progress-module section">
+
+      <div class="container section-title" data-aos="fade-up">
+        <h2>My Progress</h2>
+        <p>Web development skills that I learn</p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="xp-info">
+          <div class="xp-box">
+            <span>Total XP</span>
+            <strong id="totalXp">100 XP</strong>
+          </div>
+          <div class="xp-box">
+            <span>Level</span>
+            <strong id="level">Level 2</strong>
+          </div>
+          <div class="xp-box">
+            <span>Rank</span>
+            <strong id="rank">Trainee</strong>
+          </div>
+        </div>
+
+        <div class="xp-progress">
+          <div class="xp-progress-text">
+            <span>Progress to next level</span>
+            <span id="progressText">50% (100 / 150 XP)</span>
+          </div>
+          <div class="xp-bar">
+            <div class="xp-bar-fill" id="xpBar"></div>
+          </div>
+        </div>
+
+        <div class="skill-stats">
+          <div class="stat-box">
+            <span>Total skills</span>
+            <strong id="totalSkills">8</strong>
+          </div>
+          <div class="stat-box">
+            <span>Completed skills</span>
+            <strong id="completedSkills">3</strong>
+          </div>
+          <div class="stat-box">
+            <span>Completion rate</span>
+            <strong id="completedPercent">38%</strong>
+          </div>
+        </div>
+
+        <h3 class="board-title">Skill Kanban Board</h3>
+        <div class="kanban">
+          <div class="kanban-column planned">
+            <h4>Planned <span class="count">(3)</span></h4>
+            <div class="card-list" id="plannedList">
+              <div class="skill-card">
+                <h5>Forms and Validation</h5>
+                <span class="status">Planned</span>
+                <span class="xp">50 XP</span>
+              </div>
+              <div class="skill-card">
+                <h5>DOM Manipulation</h5>
+                <span class="status">Planned</span>
+                <span class="xp">70 XP</span>
+              </div>
+              <div class="skill-card">
+                <h5>Local Storage</h5>
+                <span class="status">Planned</span>
+                <span class="xp">40 XP</span>
+              </div>
+            </div>
+          </div>
+          <div class="kanban-column in-progress">
+            <h4>In Progress <span class="count">(2)</span></h4>
+            <div class="card-list" id="inProgressList">
+              <div class="skill-card">
+                <h5>Bootstrap Grid</h5>
+                <span class="status">In Progress</span>
+                <span class="xp">35 XP</span>
+              </div>
+              <div class="skill-card">
+                <h5>JavaScript Basics</h5>
+                <span class="status">In Progress</span>
+                <span class="xp">60 XP</span>
+              </div>
+            </div>
+          </div>
+          <div class="kanban-column completed">
+            <h4>Completed <span class="count">(3)</span></h4>
+            <div class="card-list" id="completedList">
+              <div class="skill-card">
+                <h5>HTML Basics</h5>
+                <span class="status">Completed</span>
+                <span class="xp">30 XP</span>
+              </div>
+              <div class="skill-card">
+                <h5>CSS Styling</h5>
+                <span class="status">Completed</span>
+                <span class="xp">45 XP</span>
+              </div>
+              <div class="skill-card">
+                <h5>Git and GitHub</h5>
+                <span class="status">Completed</span>
+                <span class="xp">25 XP</span>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
