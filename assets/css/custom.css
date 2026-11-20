@@ -1,4 +1,4 @@
-/* Seymur Mammadov, 2026-11-20, v4.0 */
+/* Seymur Mammadov, 2026-11-20, v5.0 */
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Montserrat:wght@600;700&display=swap");
 
@@ -469,4 +469,74 @@ section,
   50% {
     transform: scale(1.4);
   }
+}
+
+.contact .php-email-form {
+  height: auto;
+}
+
+.contact .php-email-form label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.contact .php-email-form input[type="tel"],
+.contact .php-email-form input[type="number"] {
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.contact .php-email-form .form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.error-text {
+  min-height: 18px;
+  font-size: 13px;
+  color: #dc3545;
+}
+
+.contact .php-email-form button[type="submit"]:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.clear-btn {
+  margin-left: 10px;
+  padding: 10px 30px;
+  border: 2px solid #1a56db;
+  border-radius: 6px;
+  background: white;
+  color: #1a56db;
+  font-weight: 600;
+}
+
+.clear-btn:hover {
+  background: #dbe4ff;
+}
+
+.form-result {
+  margin-top: 25px;
+  padding: 20px;
+  background: #f5f8ff;
+  border-left: 4px solid #1a56db;
+  border-radius: 0 10px 10px 0;
+}
+
+.form-result:empty {
+  display: none;
+}
+
+.form-result p {
+  margin: 0 0 5px;
+}
+
+.form-result .average {
+  margin-top: 10px;
+  font-weight: 700;
+  color: #1a56db;
 }
